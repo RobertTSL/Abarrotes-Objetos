@@ -8,6 +8,35 @@ package objetosNegocio;
  *
  * @author rober
  */
-public class MovimientoGranel {
+public class MovimientoGranel extends Movimiento {
     
+    private ProductoGranel producto;
+
+    public MovimientoGranel() {
+        super();
+    }
+
+    public MovimientoGranel(ProductoGranel producto) {
+        this.producto = producto;
+    }
+
+    public MovimientoGranel(String cveMovimiento, ProductoGranel producto) {
+        super(cveMovimiento);
+
+        this.producto = null;
+    }
+
+    public ProductoGranel getProductoEmpacado() {
+        return this.producto;
+    }
+
+    public void setProductoEmpacado(ProductoGranel producto) {
+        this.producto = producto;
+    }
+
+    @Override
+    public String toString() {
+        return getCveMovimiento() + "," + getFecha() + "," + getProcesado() + "," + producto;
+    }
+
 }

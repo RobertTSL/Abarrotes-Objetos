@@ -8,6 +8,35 @@ package objetosNegocio;
  *
  * @author rober
  */
-public class MovimientoEmpacado {
-    
+public class MovimientoEmpacado extends Movimiento {
+
+    private ProductoEmpacado producto;
+
+    public MovimientoEmpacado() {
+        super();
+    }
+
+    public MovimientoEmpacado(ProductoEmpacado producto) {
+        this.producto = producto;
+    }
+
+    public MovimientoEmpacado(String cveMovimiento, ProductoEmpacado producto) {
+        super(cveMovimiento);
+
+        this.producto = null;
+    }
+
+    public ProductoEmpacado getProductoEmpacado() {
+        return this.producto;
+    }
+
+    public void setProductoEmpacado(ProductoEmpacado producto) {
+        this.producto = producto;
+    }
+
+    @Override
+    public String toString() {
+        return getCveMovimiento() + "," + getFecha() + "," + getProcesado() + "," + producto;
+    }
+
 }

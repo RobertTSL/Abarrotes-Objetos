@@ -4,8 +4,8 @@
  */
 package objetosNegocio;
 
-
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -39,4 +39,56 @@ public class Movimiento {
         this.Fecha = null;
         this.procesado = false;
     }
+
+    public String getCveMovimiento() {
+        return this.cveMovimiento;
+    }
+
+    public void setCveMovimiento(String cveMovimiento) {
+        if (cveMovimiento != null && cveMovimiento.matches("MV[0-9]{3}")) {
+            this.cveMovimiento = cveMovimiento;
+        }
+    }
+
+    public Date getFecha() {
+        return this.Fecha;
+    }
+
+    public void setFecha(Date Fecha) {
+        if (Fecha != null && !Fecha.after(new Date())) {
+            this.Fecha = Fecha;
+        }
+    }
+
+    public boolean getProcesado() {
+        return this.procesado;
+    }
+
+    public void setProcesado(boolean procesado) {
+        this.procesado = procesado;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || !(object instanceof Movimiento)) {
+            return false;
+        }
+
+        Movimiento otro = (Movimiento) object;
+        return Objects.equals(this.cveMovimiento, otro.cveMovimiento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cveMovimiento);
+    }
+
+    @Override
+    public String toString() {
+        return cveMovimiento + "," + Fecha + "," + procesado;
+    }
+
 }
