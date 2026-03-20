@@ -5,6 +5,7 @@
 package objetosNegocio;
 
 import static java.lang.Integer.parseInt;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
@@ -21,6 +22,7 @@ public class Movimiento {
 
     public Movimiento() {
     }
+
 
     public Movimiento(String cveMovimiento, Date fecha, boolean procesado) {
         if (cveMovimiento != null && cveMovimiento.matches("MV[0-9]{3}")) {
@@ -70,24 +72,28 @@ public class Movimiento {
     }
 
     @Override
-    public boolean equals(Object otroObjeto){
-        
-        if (otroObjeto == null){return false;} 
-        
-        if(this.getClass() != otroObjeto.getClass()){ return false;}
+    public boolean equals(Object otroObjeto) {
+
+        if (otroObjeto == null) {
+            return false;
+        }
+
+        if (this.getClass() != otroObjeto.getClass()) {
+            return false;
+        }
 
         Movimiento otroProducto = (Movimiento) otroObjeto;
         return this.cveMovimiento.equals(otroProducto.cveMovimiento);
     }
-    
+
     @Override
-    public int hashCode(){
+    public int hashCode() {
         Random rand = new Random();
         int min = 1;
         int max = 10;
 
-        int randomNum = rand.nextInt((max - min) + 1) + min;        
-        int hash ;
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        int hash;
         hash = randomNum;
         return hash;
     }
